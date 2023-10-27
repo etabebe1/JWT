@@ -1,0 +1,31 @@
+<%- include("partials/header"); -%>
+
+<form id="login-form">
+  <div class="form_item_all">
+    <div class="form_container">
+      <h1>Sign Up</h1>
+
+      <div class="inputs">
+        <!-- username -->
+        <div class="form-item">
+          <input type="text" id="username" required />
+          <label for="username">Username</label>
+          <span class="email error"></span>
+        </div>
+        <div class="form-item">
+          <!-- password -->
+          <input type="password" id="password" />
+          <label for="password">Password</label>
+          <span class="password error"></span>
+        </div>
+      </div>
+
+      <div class="user_logged"></div>
+      <button class="btn btn-block">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+
+
+<%- include("partials/footer"); -%>

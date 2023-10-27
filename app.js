@@ -20,9 +20,17 @@ app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common")); // used to indicate request and related info
-app.use;
+
+// view engine
+app.set("view engine", "ejs");
 
 app.use("/api/authentication", authRouter);
+
+//routers
+// app.get("/", (req, res) => res.render("home"));
+app.get("/imagesAuth", (req, res) => res.render("imagesAuth"));
+app.get("/login", (req, res) => res.render("login"));
+app.get("/signup", (req, res) => res.render("signup"));
 
 // port
 const port = process.env.PORT || 5000;

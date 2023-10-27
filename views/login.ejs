@@ -1,0 +1,86 @@
+<%- include("partials/header"); -%>
+
+<form id="login-form">
+  <div class="form_item_all">
+    <div class="form_container">
+      <h1>Login</h1>
+
+      <div class="inputs">
+        <!-- username -->
+        <div class="form-item">
+          <input type="text" id="username" required />
+          <label for="username">Username</label>
+          <span class="email error"></span>
+        </div>
+        <div class="form-item">
+          <!-- password -->
+          <input type="password" id="password" />
+          <label for="password">Password</label>
+          <span class="password error"></span>
+        </div>
+      </div>
+
+      <div class="user_logged"></div>
+      <button class="btn btn-block">Login</button>
+    </div>
+  </div>
+</form>
+
+<script >
+  const formItems = document.querySelectorAll(".form-item");
+const form = document.querySelector("#login-form");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+// const notifyText = document.querySelector(".user_logged");
+
+// Animating the input and logic on submit data
+
+const moveLabel = () => {
+  formItems.forEach((formItem) => {
+    const input = formItem.querySelector("input");
+
+    input.value = "";
+    input.addEventListener("input", () => {
+      if (!input.value) {
+        formItem.classList.remove("active");
+      } else {
+        formItem.classList.add("active");
+      }
+    });
+  });
+};
+
+window.onload = moveLabel;
+
+// form.addEventListener("submit", async (event) => {
+//   event.preventDefault();
+
+//   const username = usernameInput.value;
+//   const password = passwordInput.value;
+//   // console.log(username, password);
+
+//   if (!username || !password) {
+//     console.log("please provide username and password");
+//   } else {
+//     try {
+//       fetch("/api/jwt/dashboard")
+//         .then((response) => {
+//           response.json();
+//         })
+//         .then((data) => {
+//           console.log(data);
+//         })
+//         .catch((error) => {
+//           console.log(error);
+//         });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// });
+
+</script>
+
+
+
+<%- include("partials/footer"); -%>

@@ -42,12 +42,24 @@ const userSchema = new mongoose.Schema(
   },
 
   { timestamps: true }
-);
+  );
 
-// used by the register route to encrypt password automatically
-userSchema.pre("save", async function () {
+
+  ///* Important terms *///
+
+// the following function in the userSchema fires ((<<BEFORE>>)) the doc is created & saved. 
+// therefore, here we're gonna hash the user's password for good.
+// also, this hook is used by register route.  
+  userSchema.pre("save", async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+  next()
+});
+
+// the following function in the userSchema fires ((<<AFTER>>)) the user is created & saved.
+userSchema.post("save", async function (doc, next) {
+  console.log("new user has been created and saved", doc);
+  next();
 });
 
 // used by the login route to compare password after password is provided
